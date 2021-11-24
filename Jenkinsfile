@@ -22,14 +22,6 @@ pipeline {
                 }
             }
         }
-        stage('package') {
-            steps {
-                echo 'Packaging worker app'
-                dir('worker'){
-                  sh 'mvn package -DskipTests'
-                }
-            }
-        }
     }
     post {
       always {
