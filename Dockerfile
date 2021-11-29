@@ -1,10 +1,13 @@
 FROM node:14-alpine
-COPY package.json package-lock.json ./
-RUN npm install &&\
-    npm cache clean --force &&\
-    npm audit fix
+USER node
+RUN mkdir -p /home/node/app
+WORKDIR /home/node/app
 
-COPY . .
+COPY --chown=node:node package.json package-lock.json ./
+
+RUN npm install && npm audit fix
+
+COPY --chown=node:node . ./
 
 CMD npm start
 
