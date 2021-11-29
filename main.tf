@@ -18,7 +18,7 @@ resource "docker_container" "joyenergy" {
     read_only = false
   }
   ports {
-    internal = 8080
-    external = 8080
+    internal = 4000
+    external = 4000
   }
 }
